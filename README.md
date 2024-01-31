@@ -1,8 +1,6 @@
-# JUPITOR Notetaker <a id="title"></a> [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a id="license-badge"></a>
+# Employee Tracker Content Management System (CMS) <a id="title"></a> [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a id="license-badge"></a>
 
 ## Description <a id="description"></a>
-
-This application will let you write and save notes So That you can orgnize your thoughts and keep track of tasks you need to complete.
 
 ## Table of Contents
 
