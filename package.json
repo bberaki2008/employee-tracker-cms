@@ -1,4 +1,7 @@
 {
+  "scripts": {
+  "start": "node index.js"
+  },
   "dependencies": {
     "console-table-printer": "^2.12.0",
     "inquirer": "^6.5.0",
