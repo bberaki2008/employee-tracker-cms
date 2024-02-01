@@ -1,11 +1,17 @@
-INSERT INTO department(id, name)
-VALUES (2, "Engineering"),
-       (3, "Finance"),
-       (4, "Legal"),
-       (1, "Sales");
 
-INSERT INTO role(id, first_name, last_name, title, salary, manager)
-VALUES (2, "Bereket","beraki", "Engineering", "100000","basi"),
-(3, "Bereket1","beraki2", "Engineering1", "120000","basi2"),
-(4, "Bereket1","beraki2", "Engineering1", "120000","basi2"),
-(5, "Bereket1","beraki2", "Engineering1", "120000","basi2"),
+INSERT INTO department(deparmentName)
+VALUES ("Sales"),
+       ("Engineering"),
+       ("Finance"),
+       ("Legal");
+
+
+INSERT INTO role(title, salary, deptId)
+VALUES ("Engineering", "100000", 1),
+("Engineering1", "120000", 2);
+
+
+INSERT INTO employee (first_name, last_name, roleID, managerID)
+VALUES ("Bereket", "Beraki", 2, NULL),
+       ("Bereket1", "Beraki1", 3, 3);
+
