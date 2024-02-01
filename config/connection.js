@@ -1,15 +1,11 @@
-import mysql from 'mysql2/promise';
+const employeeTracker_db = require('mysql2-promise')();
 
-async function employeeTracker() {
-  // create the connection
-  const conn = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'employeeTracker_db',
-    password:'bereket123'
-  },
-  console.log("connected to the Employee Tracker database.")
-  );
-}
+// create the connection
+employeeTracker_db.configure({
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "bereket123",
+    "database": "employeeTracker_db"
+});
 
-module.exports = employeeTracker;
+module.exports = employeeTracker_db;
