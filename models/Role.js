@@ -14,10 +14,10 @@ const { printTable } = require('console-table-printer');
 
 class Role {
     constructor(roleId, title,  salary, deptId){
-        roleId;
-        title;
-        salary;
-        deptId;
+        this.roleId = roleId;
+        this.title = title;
+        this.salary = salary;
+        this.deptId = deptId;
     }
 
     getAll() {
