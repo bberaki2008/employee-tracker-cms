@@ -11,7 +11,7 @@ VALUES ("Engineering", "100000", 1),
 ("Engineering1", "120000", 2);
 
 
-INSERT INTO employee (first_name, last_name, roleID, managerID)
+INSERT INTO employee(first_name, last_name, roleID, managerID)
 VALUES ("Bereket", "Beraki", 2, NULL),
-       ("Bereket1", "Beraki1", 3, 3);
+       ("Bereket1", "Beraki1", 1, 2);
 

@@ -1,4 +1,4 @@
-const employeeTracker_db = require("../config/connection");
+const connection = require("../config/connection");
 
 //Create a table
 const { printTable } = require('console-table-printer');
@@ -20,19 +20,21 @@ class Department {
 
     getAll() {
         const qry =`SELECT * FROM department`;
-        return employeeTracker_db
-               .query(qry)
-               .then(([rows]) => {
+        return connection
+                .promise()
+                .query(qry)
+                .then(([rows]) => {
                 return rows;
-               });
+                });
 
     }
 
     addDept() {
         const qry =`INSERT INTO department(deparmentName)
         VALUES ("${this.dept_name}")`;
-        return employeeTracker_db
-               .query(qry);
+        return connection
+                .promise()
+                .query(qry);
     }
 }
 
