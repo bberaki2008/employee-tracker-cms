@@ -1,6 +1,6 @@
 const Department = require("../models/Department");
 const inquirer = require("inquirer");//Create a table
-const main =require("./main");
+const mainQuestions =require("./mainQuestions.js");
 const { printTable } = require('console-table-printer');
 
 function viewDepartments() {
@@ -42,8 +42,7 @@ function departmentOptions(){
             break;
           case "Exit":
             console.clear();
-            // console.log("Exiting");
-            // console.log("quit");
+            mainQuestions.main();
             break;
         }
       });

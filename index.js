@@ -1,5 +1,5 @@
-const main = require("./promptFunctions/main");
+const mainQuestions = require("./promptFunctions/mainQuestions");
 
-main();
+mainQuestions.main();
 
 

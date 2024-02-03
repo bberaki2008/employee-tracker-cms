@@ -122,4 +122,4 @@ function main(){
   }); 
 }
 
-module.exports =main;
+exports.main =main;
