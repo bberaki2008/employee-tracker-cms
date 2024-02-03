@@ -1,6 +1,7 @@
 //imported inquirer
 const inquirer = require('inquirer');
 const {viewDepartments, addDepartment} = require("./dept");
+const { viewAllRoles, addRole  } = require("./role");
 //generating questions using inquirer CML application
 function main(){
   inquirer
@@ -86,27 +87,27 @@ function main(){
   .then((res ) => {
       switch (`${res.employeeCms}`) {
         case "View All Departments":
-          console.clear()
+          //console.clear();
           viewDepartments();
           break;
         case "Add Department":
-          console.clear();
+          //console.clear();
           addDepartment();
           break;
         case "View All Roles":
-          console.clear();
-          //cb function
+          //console.clear();
+          viewAllRoles();
           break;
         case "Add Role":
-          console.clear();
-          //cb function
+          //console.clear();
+          addRole();
           break;
         case "View All Employees":
-          console.clear();
+          //console.clear();
           //cb function
           break;
         case "Add Employee":
-          console.clear();
+          //console.clear();
           //cb function
           break;
         case "Update Employee Role":
@@ -114,7 +115,7 @@ function main(){
           //cb function
           break;
         case "Quit":
-          console.clear();
+          //console.clear();
           console.log("Shutting down... and use 'npm start' to reboot");
           console.log("quit");
           break;

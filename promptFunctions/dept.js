@@ -14,15 +14,12 @@ function viewDepartments() {
   =================
             `);
             //print a table
-            //
             printTable(rows);
             })
-            .then(() => {
-                departmentOptions();
-            });
+            .then(() => manageDepartment());
 }
 
-function departmentOptions(){
+function manageDepartment(){
 
   inquirer
     .prompt([
