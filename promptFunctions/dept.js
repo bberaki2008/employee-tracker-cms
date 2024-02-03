@@ -1,4 +1,4 @@
-const Department = require("../helper/Department");
+const Department = require("../models/Department");
 const inquirer = require("inquirer");//Create a table
 const main =require("./main");
 const { printTable } = require('console-table-printer');
@@ -54,7 +54,7 @@ function addDepartment(){
     .prompt([
       {
         type: 'input',
-        message: 'What is name of the department?',
+        message: 'What is the name of the department?',
         name: 'departmentName',
         validate: (res) => {
           if (!res) {
