@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const {viewDepartments, addDepartment} = require("./dept");
 const { viewAllRoles, addRole  } = require("./role");
+const { viewAllEmployees, addEmployee, updateEmployeeRole } = require("./emp");
 //generating questions using inquirer CML application
 function main(){
   inquirer
@@ -104,20 +105,19 @@ function main(){
           break;
         case "View All Employees":
           //console.clear();
-          //cb function
+          viewAllEmployees();
           break;
         case "Add Employee":
           //console.clear();
-          //cb function
+          addEmployee();
           break;
         case "Update Employee Role":
-          console.clear();
-          //cb function
+          updateEmployeeRole();
           break;
         case "Quit":
           //console.clear();
-          console.log("Shutting down... and use 'npm start' to reboot");
-          console.log("quit");
+          console.log("use ctrl + c to Exit or shutdown");
+          console.log("use 'npm start' to reboot");
           break;
       }
   }); 

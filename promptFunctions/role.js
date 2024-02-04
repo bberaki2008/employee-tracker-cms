@@ -31,7 +31,7 @@ function manageRole() {
     ])
     .then((res) => {
       switch (`${res.mngRole}`) {
-        case "Add role":
+        case "Add Role":
           //console.clear();
           addRole();
           break;
@@ -60,8 +60,8 @@ function addRole() {
           type: "input",
           name: "newRoleName",
           message: "What is name of this new role?",
-          validate: (rolename) => {
-            if (!rolename) {
+          validate: (name) => {
+            if (!name) {
               console.log("Please enter a name for this role!");
             }
             return true;
@@ -71,8 +71,8 @@ function addRole() {
           type: "input",
           name: "roleSalary",
           message: "How much does this role make per year?",
-          validate: (salary) => {
-            if (!salary) {
+          validate: (name) => {
+            if (!name) {
               console.log("Please enter a yearly salary for this role!");
             }
             return true;

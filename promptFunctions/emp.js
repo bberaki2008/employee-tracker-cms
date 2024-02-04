@@ -1,5 +1,5 @@
-const Employee = require("../Employee");
-const Role = require("../Role");
+const Employee = require("../models/Employee.js");
+const Role = require("../models/Role.js");
 const inquirer = require("inquirer");//Create a table
 const mainQuestions =require("./mainQuestions.js");
 const { printTable } = require('console-table-printer');
@@ -54,7 +54,7 @@ function addEmployee() {
   role.getAll().then((roles) => {
     manager.getAll().then((mgrs) => {
       let allManagers = mgrs.map((m) => {
-        return `${m.id} - ${m.first_name} ${m.last_name}`;
+        return `${m.employeeID} - ${m.first_name} ${m.last_name}`;
       });
       allManagers.push("None");
       inquirer
@@ -86,7 +86,7 @@ function addEmployee() {
             name: "roleId",
             message: "What is the new employee's role?",
             choices: roles.map((r) => {
-              return `${r.id} - ${r.title}`;
+              return `${r.roleID} - ${r.title}`;
             }),
           },
           {
@@ -108,7 +108,7 @@ function addEmployee() {
           );
           employee.addEmployee();
           viewAllEmployees();
-          printTable("Added employee \n");
+          //printTable("Added employee \n");
         });
     });
   });
@@ -127,7 +127,7 @@ function updateEmployeeRole() {
             name: "emp",
             message: "Which employee's role do you want to update?",
             choices: res.map((emp) => {
-              return `${emp.employeeId} - ${emp.first_name} ${emp.last_name}`;
+              return `${emp.employeeID} - ${emp.first_name} ${emp.last_name}`;
             }),
           },
           {
@@ -143,15 +143,23 @@ function updateEmployeeRole() {
           let empId = emp.split(" ");
           let roleId = role.split(" ");
           let selectedEmp = new Employee(empId[0]);
-          selectedEmp.getEmployeeById().then((res) => {
-            sEmp = res[0];
-            let employee = new Employee(
-              sEmp.employeeId,
-              sEmp.first_name,
-              sEmp.last_name,
+          //console.log(`emp.js - ${empId[0]}`)
+          selectedEmp.getEmployee().then((sEmp) => {
+            sEmp = sEmp[0];
+            console.log(sEmp);
+                        console.log(sEmp[0].employeeID,
+              sEmp[0].first_name,
+              sEmp[0].last_name,
               roleId[0],
-              sEmp.managerId
+              sEmp[0].managerID);
+            let employee = new Employee(
+              sEmp[0].employeeID,
+              sEmp[0].first_name,
+              sEmp[0].last_name,
+              roleId[0],
+              sEmp[0].managerID
             );
+
             employee.updateEmployee().then(() => {
               console.log(`
               
@@ -164,8 +172,4 @@ function updateEmployeeRole() {
   });
 }
 
-module.exports = {
-  viewAllEmployees,
-  addEmployee,
-  updateEmployeeRole,
-};
+module.exports = { viewAllEmployees, addEmployee, updateEmployeeRole };
