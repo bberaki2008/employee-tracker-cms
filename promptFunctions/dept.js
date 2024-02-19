@@ -17,35 +17,10 @@ function viewDepartments() {
             printTable(rows);
             })
             .then(() => {
-                          // manageDepartment();
                           mainQuestions.main();
                         }
             );
 }
-
-// function manageDepartment(){
-
-//   inquirer
-//     .prompt([
-//       {
-//         type: 'list',
-//         message: 'What would you like to do?',
-//         name: 'addDepartment',
-//         choices: ["Add A Department", "Exit"],
-//         default: "Add A Department",
-//       },
-
-//       ]).then((res) => {
-//         switch (`${res.addDepartment}`) {
-//           case "Add A Department":
-//             addDepartment();
-//             break;
-//           case "Exit":
-//             mainQuestions.main();
-//             break;
-//         }
-//       });
-// }
 
 function addDepartment(){
   inquirer
@@ -68,10 +43,7 @@ function addDepartment(){
       viewDepartments();
       console.table("Added department \n");
     });
-
-
 }
-
 
 
 module.exports = {viewDepartments, addDepartment};
