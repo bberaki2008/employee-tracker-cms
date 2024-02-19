@@ -2,22 +2,12 @@ const connection = require("../config/connection");
 
 //Create a table
 const { printTable } = require('console-table-printer');
-
-//Create a table
-// const testCases = [
-//   { Rank: 3, text: 'I would like some Yellow', value: 100 },
-//   { Rank: 4, text: 'I hope batch update is working', value: 300 },
-// ];
-
-//print a table
-//printTable(testCases);
-
 class Role {
-    constructor(roleId, title,  salary, deptId){
+    constructor(roleId, title, deptId,  salary){
         this.roleId = roleId;
         this.title = title;
-        this.salary = salary;
         this.deptId = deptId;
+        this.salary = salary;
     }
 
     getAll() {
@@ -28,12 +18,11 @@ class Role {
                .then(([rows]) => {
                 return rows;
                });
-
     }
 
     addRole() {
-        const qry =`INSERT INTO role(title, salary, deptId)
-        VALUES ("${this.title}", "${this.salary}","${this.deptId}")`;
+        const qry =`INSERT INTO role(title, deptId, salary)
+        VALUES ("${this.title}","${this.deptId}", "${this.salary}")`;
         return connection
                .promise()
                .query(qry);

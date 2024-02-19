@@ -13,8 +13,8 @@ DROP TABLE IF EXISTS role;
 CREATE TABLE role(
     roleID INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
-    salary INT NOT NULL,
     deptId INT,
+    salary INT NOT NULL,
     FOREIGN KEY (deptId) REFERENCES department(deptId) ON DELETE SET NULL
 );
 

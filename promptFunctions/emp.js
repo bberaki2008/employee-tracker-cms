@@ -19,39 +19,9 @@ function viewAllEmployees() {
             printTable(rows);
     })
     .then(() => {
-                  // manageEmployee();
-                  mainQuestions.main();
-
-                  
+                  mainQuestions.main();            
     });
 }
-
-// function manageEmployee(){
-
-//   inquirer
-//     .prompt([
-//       {
-//         type: 'list',
-//         message: 'What would you like to do?',
-//         name: 'mngEmployee',
-//         choices: ["Add an employee", "Update an employee's role","Exit"],
-//         default: "Add an employee",
-//       },
-//       ]).then((res ) => {
-//         switch (`${res.mngEmployee}`) {
-//           case "Add an employee":
-//             addEmployee();
-//             break;
-//           case "Update an employee's role":
-//             updateEmployeeRole();
-//             break;
-//           case "Exit":
-//             mainQuestions.main();
-//             break;
-//         }
-//       });
-// }
-
 
 function addEmployee() {
   const role = new Role();
@@ -148,15 +118,8 @@ function updateEmployeeRole() {
           let empId = emp.split(" ");
           let roleId = role.split(" ");
           let selectedEmp = new Employee(empId[0]);
-          //console.log(`emp.js - ${empId[0]}`)
           selectedEmp.getEmployee().then((selEmp) => {
             selEmp = selEmp[0];
-            console.log(selEmp);
-                        console.log(selEmp[0].employeeID,
-              selEmp[0].first_name,
-              selEmp[0].last_name,
-              roleId[0],
-              selEmp[0].managerID);
             let employee = new Employee(
               selEmp[0].employeeID,
               selEmp[0].first_name,
@@ -178,14 +141,3 @@ function updateEmployeeRole() {
 }
 
 module.exports = { viewAllEmployees, addEmployee, updateEmployeeRole };
-
-console.log(`
-    
-
-
-
-
-
-
-
-`)

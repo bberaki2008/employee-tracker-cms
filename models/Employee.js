@@ -3,15 +3,6 @@ const connection = require("../config/connection");
 //Create a table
 const { printTable } = require('console-table-printer');
 
-//Create a table
-// const testCases = [
-//   { Rank: 3, text: 'I would like some Yellow', value: 100 },
-//   { Rank: 4, text: 'I hope batch update is working', value: 300 },
-// ];
-
-//print a table
-//printTable(testCases);
-
 class Employee {
     constructor(employeeID, first_name, last_name, roleId, managerID){
         this.employeeID = employeeID;
