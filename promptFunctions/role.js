@@ -16,32 +16,35 @@ function viewAllRoles() {
       `);
       printTable(rows);
     })
-    .then(() => manageRole());
+    .then(() => {
+                  manageRole();
+                  mainQuestions.main();
+                });
 }
 
-function manageRole() {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "mngRole",
-        message: "What would you like to do?",
-        choices: ["Add Role", "Exit Role"],
-      },
-    ])
-    .then((res) => {
-      switch (`${res.mngRole}`) {
-        case "Add Role":
-          //console.clear();
-          addRole();
-          break;
-        case "Exit Role":
-          //console.clear();
-          mainQuestions.main();
-          break;
-      }
-    });
-}
+// function manageRole() {
+//   inquirer
+//     .prompt([
+//       {
+//         type: "list",
+//         name: "mngRole",
+//         message: "What would you like to do?",
+//         choices: ["Add A Role", "Exit Role"],
+//       },
+//     ])
+//     .then((res) => {
+//       switch (`${res.mngRole}`) {
+//         case "Add A Role":
+//           //console.clear();
+//           addRole();
+//           break;
+//         case "Exit Role":
+//           //console.clear();
+//           mainQuestions.main();
+//           break;
+//       }
+//     });
+// }
 
 function addRole() {
   const department = new Department();

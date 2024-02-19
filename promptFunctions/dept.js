@@ -16,34 +16,36 @@ function viewDepartments() {
             //print a table
             printTable(rows);
             })
-            .then(() => manageDepartment());
+            .then(() => {
+                          // manageDepartment();
+                          mainQuestions.main();
+                        }
+            );
 }
 
-function manageDepartment(){
+// function manageDepartment(){
 
-  inquirer
-    .prompt([
-      {
-        type: 'list',
-        message: 'What would you like to do?',
-        name: 'addDepartment',
-        choices: ["Add Department", "Exit"],
-        default: "Add Department",
-      },
+//   inquirer
+//     .prompt([
+//       {
+//         type: 'list',
+//         message: 'What would you like to do?',
+//         name: 'addDepartment',
+//         choices: ["Add A Department", "Exit"],
+//         default: "Add A Department",
+//       },
 
-      ]).then((res ) => {
-        switch (`${res.addDepartment}`) {
-          case "Add Department":
-            console.clear()
-            addDepartment();
-            break;
-          case "Exit":
-            console.clear();
-            mainQuestions.main();
-            break;
-        }
-      });
-}
+//       ]).then((res) => {
+//         switch (`${res.addDepartment}`) {
+//           case "Add A Department":
+//             addDepartment();
+//             break;
+//           case "Exit":
+//             mainQuestions.main();
+//             break;
+//         }
+//       });
+// }
 
 function addDepartment(){
   inquirer
@@ -63,7 +65,6 @@ function addDepartment(){
     .then((res) => {
       const depart= new Department(null, res.departmentName);
       depart.addDept();
-      console.clear();
       viewDepartments();
       console.table("Added department \n");
     });

@@ -3,6 +3,26 @@ const inquirer = require('inquirer');
 const {viewDepartments, addDepartment} = require("./dept");
 const { viewAllRoles, addRole  } = require("./role");
 const { viewAllEmployees, addEmployee, updateEmployeeRole } = require("./emp");
+
+
+console.log(`
+ __________________________________________________________________
+|    ______                  __                                    |          
+|   | _____|________  _ __  |  |  ____   __    __  _____  _____    |  
+|   |   _| |  _   _ \\|  _  \\|  |/  __  \\|  |  |  |/  _  \\/  _  \\   |
+|   |  |___| | | | | | |_|  |  |  |__|  |  |__|  |   ___/   ___/   |
+|   |______|_| |_| |_| .___/|__|\\______/ \\___,   |\\_____|\\_____|   |
+|                    |_|                 |______/                  |
+|   __  __                                                         |
+|  |  \\/  | ___ __ __ ___    ___ _  ___ __   ___   _ ___           |
+|  | |\\/| |/  _'  |  '__ \\ /   _' |/  __'  |/  _ \\  '__|           |
+|  | |  | |  |_|  |  |  |  |  |_| |  |__|  |   __/  |              |
+|  |_|  |_|\\___,__|__|  |__|\____,_|\\____,  |\\____|__|              |
+|                                  |______/                        |
+|                                                                  |
+|__________________________________________________________________|
+
+`);
 //generating questions using inquirer CML application
 function main(){
   inquirer
@@ -11,7 +31,7 @@ function main(){
       type: 'list',
       message: 'What would you like to do?',
       name: 'employeeCms',
-      choices: ["View All Employees", "Add Employee", "Update Employee Role", "View All Roles", "Add Role", "View All Departments", "Add Department", "Quit"],
+      choices: ["View All Employees", "Add An Employee", "Update An Employee Role", "View All Roles", "Add A Role", "View All Departments", "Add A Department", "Quit"],
       default: "View All Employees",
     },
   //     //Add Department
@@ -91,7 +111,7 @@ function main(){
           //console.clear();
           viewDepartments();
           break;
-        case "Add Department":
+        case "Add A Department":
           //console.clear();
           addDepartment();
           break;
@@ -99,7 +119,7 @@ function main(){
           //console.clear();
           viewAllRoles();
           break;
-        case "Add Role":
+        case "Add A Role":
           //console.clear();
           addRole();
           break;
@@ -107,11 +127,11 @@ function main(){
           //console.clear();
           viewAllEmployees();
           break;
-        case "Add Employee":
+        case "Add An Employee":
           //console.clear();
           addEmployee();
           break;
-        case "Update Employee Role":
+        case "Update An Employee Role":
           updateEmployeeRole();
           break;
         case "Quit":
