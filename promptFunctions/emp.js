@@ -18,34 +18,39 @@ function viewAllEmployees() {
             //print a table
             printTable(rows);
     })
-    .then(() => manageEmployee());
+    .then(() => {
+                  // manageEmployee();
+                  mainQuestions.main();
+
+                  
+    });
 }
 
-function manageEmployee(){
+// function manageEmployee(){
 
-  inquirer
-    .prompt([
-      {
-        type: 'list',
-        message: 'What would you like to do?',
-        name: 'mngEmployee',
-        choices: ["Add an employee", "Update an employee's role","Exit"],
-        default: "Add Department",
-      },
-      ]).then((res ) => {
-        switch (`${res.mngEmployee}`) {
-          case "Add an employee":
-            addEmployee();
-            break;
-          case "Update an employee's role":
-            updateEmployeeRole();
-            break;
-          case "Exit":
-            mainQuestions.main();
-            break;
-        }
-      });
-}
+//   inquirer
+//     .prompt([
+//       {
+//         type: 'list',
+//         message: 'What would you like to do?',
+//         name: 'mngEmployee',
+//         choices: ["Add an employee", "Update an employee's role","Exit"],
+//         default: "Add an employee",
+//       },
+//       ]).then((res ) => {
+//         switch (`${res.mngEmployee}`) {
+//           case "Add an employee":
+//             addEmployee();
+//             break;
+//           case "Update an employee's role":
+//             updateEmployeeRole();
+//             break;
+//           case "Exit":
+//             mainQuestions.main();
+//             break;
+//         }
+//       });
+// }
 
 
 function addEmployee() {
@@ -144,20 +149,20 @@ function updateEmployeeRole() {
           let roleId = role.split(" ");
           let selectedEmp = new Employee(empId[0]);
           //console.log(`emp.js - ${empId[0]}`)
-          selectedEmp.getEmployee().then((sEmp) => {
-            sEmp = sEmp[0];
-            console.log(sEmp);
-                        console.log(sEmp[0].employeeID,
-              sEmp[0].first_name,
-              sEmp[0].last_name,
+          selectedEmp.getEmployee().then((selEmp) => {
+            selEmp = selEmp[0];
+            console.log(selEmp);
+                        console.log(selEmp[0].employeeID,
+              selEmp[0].first_name,
+              selEmp[0].last_name,
               roleId[0],
-              sEmp[0].managerID);
+              selEmp[0].managerID);
             let employee = new Employee(
-              sEmp[0].employeeID,
-              sEmp[0].first_name,
-              sEmp[0].last_name,
+              selEmp[0].employeeID,
+              selEmp[0].first_name,
+              selEmp[0].last_name,
               roleId[0],
-              sEmp[0].managerID
+              selEmp[0].managerID
             );
 
             employee.updateEmployee().then(() => {
@@ -173,3 +178,14 @@ function updateEmployeeRole() {
 }
 
 module.exports = { viewAllEmployees, addEmployee, updateEmployeeRole };
+
+console.log(`
+    
+
+
+
+
+
+
+
+`)

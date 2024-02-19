@@ -14,7 +14,7 @@ const { printTable } = require('console-table-printer');
 
 class Department {
     constructor(deptId, dept_name){
-        deptId;
+        this.deptId =deptId;
         this.dept_name=dept_name;
     }
 
