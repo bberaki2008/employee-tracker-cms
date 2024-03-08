@@ -4,16 +4,16 @@ const connection = require("../config/connection");
 const { printTable } = require('console-table-printer');
 
 class Employee {
-    constructor(employeeID, first_name, last_name, roleId, managerID){
+    constructor(employeeID, first_name, last_name, roleID, managerID){
         this.employeeID = employeeID;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.roleId = roleId;
+        this.roleID = roleID;
         this.managerID = managerID;
     }
 
     getAll() {
-        const qry =`SELECT * FROM employee`;
+        const qry =`SELECT employee.employeeID, employee.first_name, employee.last_name, role.title, role.salary, department.deparmentName, CONCAT(manager.first_name, " ", manager.last_name) AS manager FROM employee LEFT JOIN role on employee.roleID = role.roleID LEFT JOIN department ON role.deptId = department.deptId LEFT JOIN employee manager ON employee.managerID =manager.employeeID ;`;
         return connection
                .promise()
                .query(qry)
@@ -25,7 +25,7 @@ class Employee {
     addEmployee() {
         const qry =`INSERT INTO employee(first_name, last_name, roleID, managerID)
         VALUES (?,?,?,?)`;
-        const params =[this.first_name, this.last_name, this.roleId, this.managerID];
+        const params =[this.first_name, this.last_name, this.roleID, this.managerID];
         return connection
                .promise()
                .query(qry, params);
@@ -39,8 +39,8 @@ class Employee {
     }
 
     updateEmployee() {
-        const qry =`UPDATE employee SET roleID = ? Where employeeID = "${this.employeeID}"`;
-        const params = [this.roleId];
+        const qry =`UPDATE employee SET roleID = ?, managerID =? Where employeeID = "${this.employeeID}"`;
+        const params = [this.roleID, this.managerID];
         return connection
                .promise()
                .query(qry, params)

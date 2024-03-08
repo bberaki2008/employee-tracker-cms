@@ -17,7 +17,6 @@ class Department {
                 .then(([rows]) => {
                 return rows;
                 });
-
     }
 
     addDept() {
