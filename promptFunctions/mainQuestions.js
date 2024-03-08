@@ -59,9 +59,7 @@ function main(){
           updateEmployeeRole();
           break;
         case "Quit":
-          console.log("use ctrl + c to Exit or shutdown");
-          console.log("use 'npm start' to reboot");
-          break;
+          process.exit(0);
       }
   }); 
 }

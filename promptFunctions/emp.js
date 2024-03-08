@@ -29,7 +29,7 @@ function addEmployee() {
   role.getAll().then((roles) => {
     manager.getAll().then((mgrs) => {
       let allManagers = mgrs.map((m) => {
-        return `${m.employeeID} - ${m.first_name} ${m.last_name}`;
+        return `${m.employeeID}-${m.first_name} ${m.last_name}`;
       });
       allManagers.push("None");
       inquirer
@@ -61,7 +61,7 @@ function addEmployee() {
             name: "roleId",
             message: "What is the new employee's role?",
             choices: roles.map((r) => {
-              return `${r.roleID} - ${r.title}`;
+              return `${r.roleID}-${r.title}`;
             }),
           },
           {
@@ -72,8 +72,8 @@ function addEmployee() {
           },
         ])
         .then(({ firstName, lastName, roleId, managerId }) => {
-          let arrRoleId = roleId.split(" ");
-          let arrManagerId = managerId.split(" ");
+          let arrRoleId = roleId.split("-");
+          let arrManagerId = managerId.split("-");
           const employee = new Employee(
             null,
             firstName,
@@ -110,24 +110,34 @@ function updateEmployeeRole() {
             name: "role",
             message: "Which role do you want to assign the selected employee?",
             choices: roles.map((res) => {
-              return `${res.roleID} - ${res.title}`;
+              return `${res.roleID}-${res.title}`;
+            }),
+          },
+          {
+            type: "list",
+            name: "managerId",
+            message: "Who is the new employee's manager?",
+            choices: res.map((emp) => {
+              return `${emp.employeeID}-${emp.first_name} ${emp.last_name}`;
             }),
           },
         ])
-        .then(({ emp, role }) => {
+        .then(({ emp, role, managerId }) => {
           let empId = emp.split(" ");
-          let roleId = role.split(" ");
+          let roleId = role.split("-");
+          let managId = managerId.split("-");
+          console.log(managId);
           let selectedEmp = new Employee(empId[0]);
-          selectedEmp.getEmployee().then((selEmp) => {
+            selectedEmp.getEmployee().then((selEmp) => {
             selEmp = selEmp[0];
             let employee = new Employee(
               selEmp[0].employeeID,
               selEmp[0].first_name,
               selEmp[0].last_name,
               roleId[0],
-              selEmp[0].managerID
+              managId[0],
             );
-
+            console.log(employee);
             employee.updateEmployee().then(() => {
               console.log(`
               
